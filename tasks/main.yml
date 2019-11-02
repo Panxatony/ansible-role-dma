@@ -5,26 +5,26 @@
 - name: configure
   template:
     src: dma.conf.j2
-    dest: /etc/dma/dma.conf
-    owner: root
-    group: mail
+    dest: {{ rl_dma_config }}
+    owner: {{ rl_dma_user }}
+    group: {{ rl_dma_group }}
     mode: "u=rw,g=r,o="
 
 - name: configure authorisation
   template:
     src: auth.conf.j2
-    dest: /etc/dma/auth.conf
-    owner: root
-    group: mail
+    dest: {{ rl_dma_auth }}
+    owner: {{ rl_dma_user }}
+    group: {{ rl_dma_group }}
     mode: "u=rw,g=r,o="
-  when: dma_user is defined or dma_password is defined
+  when: rl_dma_user is defined or rl_dma_password is defined
 
 - name: set alias to forward all mail
   template:
     src: aliases.j2
-    dest: /etc/aliases
-    owner: root
-    group: root
+    dest: {{ rl_dma_aliases }}
+    owner: {{ rl_dma_aliases_user }}
+    group: {{ rl_dma_aliases_group }}
     mode: 0644
     backup: yes
-  when: dma_alias_mail is defined
+  when: rl_dma_alias_mail is defined
