@@ -1,9 +1,9 @@
 ---
-rl_dma_config: /usr/local/etc/dma/dma.conf
-rl_dma_auth: /usr/local/etc/dma/auth.conf
+rl_dma_config: /etc/dma/dma.conf
+rl_dma_auth: /etc/dma/auth.conf
 rl_dma_config_owner: root
 rl_dma_config_group: mail
-rl_dma_aliases: /usr/local/etc/aliases
+rl_dma_aliases: /etc/dma/aliases
 rl_dma_aliases_owner: root
 rl_dma_aliases_group: wheel
 rl_dma_insecure: false
