@@ -5,5 +5,5 @@ rl_dma_config_owner: root
 rl_dma_config_group: mail
 rl_dma_aliases: /usr/local/etc/aliases
 rl_dma_aliases_owner: root
-rl_dma_aliases_group: root
+rl_dma_aliases_group: wheel
 rl_dma_insecure: false
