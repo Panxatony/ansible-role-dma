@@ -1,4 +1,12 @@
 ---
+- name: Set OS dependent variables
+  include_vars: "{{ item }}"
+  with_first_found:
+   - "{{ ansible_distribution }}_{{ ansible_distribution_major_version }}.yml"
+   - "{{ ansible_distribution }}.yml"
+   - "{{ ansible_os_family }}_{{ ansible_distribution_major_version }}.yml"
+   - "{{ ansible_os_family }}.yml"
+
 - name: install
   package: name=dma state=latest
 
@@ -6,16 +14,16 @@
   template:
     src: dma.conf.j2
     dest: "{{ rl_dma_config }}"
-    owner: "{{ rl_dma_user }}"
-    group: "{{ rl_dma_group }}"
+    owner: "{{ rl_dma_config_owner}}"
+    group: "{{ rl_dma_config_group }}"
     mode: "u=rw,g=r,o="
 
 - name: configure authorisation
   template:
     src: auth.conf.j2
     dest: "{{ rl_dma_auth }}"
-    owner: "{{ rl_dma_user }}"
-    group: "{{ rl_dma_group }}"
+    owner: "{{ rl_dma_config_owner }}"
+    group: "{{ rl_dma_config_group }}"
     mode: "u=rw,g=r,o="
   when: rl_dma_user is defined or rl_dma_password is defined
 
@@ -23,7 +31,7 @@
   template:
     src: aliases.j2
     dest: "{{ rl_dma_aliases }}"
-    owner: "{{ rl_dma_aliases_user }}"
+    owner: "{{ rl_dma_aliases_owner }}"
     group: "{{ rl_dma_aliases_group }}"
     mode: 0644
     backup: yes
