@@ -8,7 +8,7 @@ PORT {{ rl_dma_port }}
 SECURETRANSFER
 {% endif %}
 {% if rl_dma_user is defined or rl_dma_password is defined %}
-AUTHPATH {{ rl_dma_aliases }}
+AUTHPATH {{ rl_dma_auth }}
 {% endif %}
 {% if rl_dma_starttls is defined %}
 STARTTLS
