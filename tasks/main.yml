@@ -36,3 +36,7 @@
     mode: 0644
     backup: yes
   when: rl_dma_alias_mail is defined
+
+- name: include FreeBSD specific tasks
+  include_tasks: "{{ ansible_os_family }}.yml"
+

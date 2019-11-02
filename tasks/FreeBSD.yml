@@ -1,0 +1,12 @@
+---
+- name: disable sendmail
+  sysrc:
+    name: "{{ item.name }}"
+    state: present
+    value: "{{ item.value }}"
+    dest: /etc/rc.conf
+  loop:
+    - { name: sendmail_enable, value: NO }
+    - { name: sendmail_submit_enable, value: NO }
+    - { name: sendmail_outbound_enable, value: NO }
+    - { name: sendmail_msp_queue_enable, value: NO }
