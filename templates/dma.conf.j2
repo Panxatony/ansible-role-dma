@@ -1,22 +1,22 @@
 # {{ ansible_managed }}
 
-SMARTHOST {{ dma_smarthost }}
-{% if dma_port is defined %}
-PORT {{ dma_port }}
+SMARTHOST {{ rl_dma_smarthost }}
+{% if rl_dma_port is defined %}
+PORT {{ rl_dma_port }}
 {% endif %}
-{% if dma_securetransfer is defined %}
+{% if rl_dma_securetransfer is defined %}
 SECURETRANSFER
 {% endif %}
-{% if dma_user is defined or dma_password is defined %}
-AUTHPATH /etc/dma/auth.conf
+{% if rl_dma_user is defined or rl_dma_password is defined %}
+AUTHPATH {{ rl_dma_auth }}
 {% endif %}
-{% if dma_starttls is defined %}
+{% if rl_dma_starttls is defined %}
 STARTTLS
 {% endif %}
-MAILNAME {{ dma_mailname | default(ansible_nodename) }}
-{% if dma_insecure is defined %}
+MAILNAME {{ rl_dma_mailname | default(ansible_nodename) }}
+{% if rl_dma_insecure is defined %}
 INSECURE
 {% endif %}
-{% if dma_masquerade is defined %}
-MASQUERADE {{ dma_masquerade }}
+{% if rl_dma_masquerade is defined %}
+MASQUERADE {{ rl_dma_masquerade }}
 {% endif %}

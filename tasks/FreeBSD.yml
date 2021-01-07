@@ -1,0 +1,24 @@
+---
+- name: disable sendmail
+  sysrc:
+    name: "{{ item.name }}"
+    state: present
+    value: "{{ item.value }}"
+    dest: /etc/rc.conf
+  loop:
+    - { name: sendmail_enable, value: "NO" }
+    - { name: sendmail_submit_enable, value: "NO" }
+    - { name: sendmail_outbound_enable, value: "NO" }
+    - { name: sendmail_msp_queue_enable, value: "NO" }
+
+- name: set sendmail periodic
+  sysrc:
+    name: "{{ item.name }}"
+    state: present
+    value: "{{ item.value }}"
+    dest: /etc/rc.conf
+  loop:
+    - { name: daily_clean_hoststat_enable, value: "NO" }
+    - { name: daily_status_mail_rejects_enable, value: "NO" }
+    - { name: daily_status_include_submit_mailq, value: "NO" }
+    - { name: daily_submit_queuerun, value: "NO" }
