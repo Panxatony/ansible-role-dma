@@ -7,3 +7,4 @@ rl_dma_aliases: /etc/dma/aliases
 rl_dma_aliases_owner: root
 rl_dma_aliases_group: wheel
 rl_dma_insecure: false
+rl_dma_mailer_config: /etc/mail/mailer.conf

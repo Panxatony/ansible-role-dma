@@ -28,12 +28,10 @@
   when: rl_dma_user is defined or rl_dma_password is defined
 
 - name: set alias to forward all mail
-  template:
-    src: aliases.j2
+  lineinfile:
     dest: "{{ rl_dma_aliases }}"
-    owner: "{{ rl_dma_aliases_owner }}"
-    group: "{{ rl_dma_aliases_group }}"
-    mode: 0644
+    regexp: '^root:'
+    line: "root: {{ rl_dma_alias_mail }}"
     backup: yes
   when: rl_dma_alias_mail is defined
 
