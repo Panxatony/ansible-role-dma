@@ -22,3 +22,11 @@
     - { name: daily_status_mail_rejects_enable, value: "NO" }
     - { name: daily_status_include_submit_mailq, value: "NO" }
     - { name: daily_submit_queuerun, value: "NO" }
+
+- name: set dma als default sendmail program
+  template:
+    src: mailer.conf.j2
+    dest: "{{ rl_dma_mailer_config }}"
+    owner: root
+    group: wheel
+    mode: "u=rw,g=r,o=r"

@@ -1,2 +1,5 @@
 ---
 # handlers file for dma
+
+- name: update aliases
+  shell: which newaliases && newaliases || true

@@ -1,0 +1,10 @@
+# $FreeBSD: releng/12.1/etc/mail/mailer.conf 327236 2017-12-27 06:23:50Z delphij $
+#
+# Execute the "real" sendmail program, named /usr/libexec/sendmail/sendmail
+#
+sendmail  /usr/local/libexec/dma
+send-mail  /usr/local/libexec/dma
+mailq  /usr/local/libexec/dma
+newaliases  /usr/local/libexec/dma
+hoststat  /usr/bin/true
+purgestat  /usr/bin/true
