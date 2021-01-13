@@ -28,11 +28,12 @@
   when: rl_dma_user is defined or rl_dma_password is defined
 
 - name: set alias to forward all mail
-  lineinfile:
-    dest: "{{ rl_dma_aliases }}"
-    regexp: '^root:'
-    line: "root: {{ rl_dma_alias_mail }}"
-    backup: yes
+  template:
+    src: aliases.j2
+    dest: "{{ rl_dma_auth }}"
+    owner: "{{ rl_dma_config_owner }}"
+    group: "{{ rl_dma_config_group }}"
+    mode: "u=rw,g=r,o="
   when: rl_dma_alias_mail is defined
 
 - name: include FreeBSD specific tasks
