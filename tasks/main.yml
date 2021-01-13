@@ -30,7 +30,7 @@
 - name: set alias to forward all mail
   template:
     src: aliases.j2
-    dest: "{{ rl_dma_auth }}"
+    dest: "{{ rl_dma_aliases }}"
     owner: "{{ rl_dma_config_owner }}"
     group: "{{ rl_dma_config_group }}"
     mode: "u=rw,g=r,o="
