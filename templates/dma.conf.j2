@@ -22,5 +22,5 @@ MASQUERADE {{ rl_dma_masquerade }}
 {% endif %}
 {% if rl_dma_aliases is defined %}
 # Path to your alias file.  Just stay with the default.
-ALIASES /etc/aliases
+ALIASES {{ rl_dma_aliases }}
 {% endif %}
